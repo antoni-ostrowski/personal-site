@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "dev:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch",
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify",
+    "build": "bun run build:css && hugo",
+    "dev": "bun run dev:css & hugo server -D"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "latest",
+    "tailwindcss": "latest"
+  }
+}
