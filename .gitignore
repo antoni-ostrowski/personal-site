@@ -1,0 +1,13 @@
+# Hugo build output — never edit, never commit
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Generated Tailwind output (rebuilt by `bun run build:css` / `dev:css`)
+/static/css/main.css
+
+# JS tooling
+/node_modules/
+
+# macOS
+.DS_Store

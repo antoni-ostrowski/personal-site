@@ -1,0 +1,10 @@
+[tools]
+bun = "1.4.0"
+
+[tasks.dev]
+description = "Tailwind watcher + hugo server"
+run = "bun run dev"
+
+[tasks.build]
+description = "Tailwind build + hugo build"
+run = "bun run build"

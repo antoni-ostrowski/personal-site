@@ -11,5 +11,5 @@
     "concurrently": "latest",
     "tailwindcss": "latest"
   },
-  "packageManager": "bun@1.3.10"
+  "packageManager": "bun@1.4.1"
 }
