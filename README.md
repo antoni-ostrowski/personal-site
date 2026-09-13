@@ -30,6 +30,8 @@ Writeup in **markdown** here. Rendered as the article body.
 Media files live in `static/` (`static/images/`, `static/videos/`) and are
 referenced by URL (`/images/...`). Absolute `https://` URLs also work for
 `video`/`videos` (use raw file links, e.g. release assets — not `.../blob/...` pages).
+Local images get exact `width`/`height` from the file at build time (no layout
+shift, dark placeholder while loading); videos reserve a 16:9 box.
 
 # dev
 

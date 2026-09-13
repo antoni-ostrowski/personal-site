@@ -24,12 +24,14 @@
 </ul>
 
 {{ with .Params.video }}
-<video class="mt-6 w-full" controls preload="metadata" {{ with $.Params.image }}poster="{{ . }}" {{ end }}>
-	<source src="{{ . }}" type="video/mp4">
-</video>
+<div class="mt-6 aspect-video w-full bg-zinc-900">
+	<video class="h-full w-full" controls preload="metadata" {{ with $.Params.image }}poster="{{ . }}" {{ end }}>
+		<source src="{{ . }}" type="video/mp4">
+	</video>
+</div>
 {{ else }}
 {{ with $.Params.image }}
-<img class="mt-6 w-full" src="{{ . }}" alt="{{ $.Title }}">
+<img class="mt-6 w-full bg-zinc-900" src="{{ . }}" alt="{{ $.Title }}" {{ if strings.HasPrefix . "/" }}{{ with images.Config (printf "static%s" .) }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ end }}>
 {{ end }}
 {{ end }}
 
@@ -37,15 +39,17 @@
 {{ with .Params.gallery }}
 <div class="mt-6 grid gap-4">
 	{{ range . }}
-	<img class="w-full" src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+	<img class="w-full bg-zinc-900" src="{{ . }}" alt="{{ $.Title }}" loading="lazy" {{ if strings.HasPrefix . "/" }}{{ with images.Config (printf "static%s" .) }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ end }}>
 	{{ end }}
 </div>
 {{ end }}
 
 {{ range .Params.videos }}
-<video class="mt-6 w-full" controls preload="metadata">
-	<source src="{{ . }}" type="video/mp4">
-</video>
+<div class="mt-6 aspect-video w-full bg-zinc-900">
+	<video class="h-full w-full" controls preload="metadata">
+		<source src="{{ . }}" type="video/mp4">
+	</video>
+</div>
 {{ end }}
 
 
