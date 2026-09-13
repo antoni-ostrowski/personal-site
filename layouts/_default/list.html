@@ -1,0 +1,20 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<a class="text-xs text-zinc-500 transition-colors hover:text-accent" href="/">&larr;
+	Back</a>
+
+<h1 class="mt-4 text-4xl leading-none text-zinc-50 sm:text-5xl">{{ .Title }}</h1>
+
+<ul class="mt-10 divide-y divide-zinc-800 border-y border-zinc-800">
+	{{ range sort .Pages ".Weight" "desc" }}
+	<li class="group py-4">
+		<a class="flex items-baseline justify-between gap-6 text-xl font-medium text-zinc-100 transition-colors group-hover:text-accent"
+			href="{{ .RelPermalink }}">{{ .Title }}</a>
+		{{ with .Params.summary }}
+		<p class="mt-2 max-w-2xl text-zinc-400">{{ . }}</p>
+		{{ end }}
+	</li>
+	{{ end }}
+</ul>
+{{ end }}

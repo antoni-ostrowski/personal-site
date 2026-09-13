@@ -4,34 +4,80 @@
 @source "../../content";
 
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-display: Georgia, Cambria, "Times New Roman", serif;
+	--color-accent: var(--color-amber-300);
+	--font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "Roboto", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "Source Code Pro", ui-monospace, monospace;
+
+	--default-font-family: var(--font-mono);
+	--default-mono-font-family: var(--font-mono);
 }
 
 @layer base {
-  body {
-    @apply antialiased;
-  }
+	@font-face {
+		font-family: "Roboto";
+		src: url("/fonts/Roboto-Variable.ttf") format("truetype-variations");
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Roboto";
+		src: url("/fonts/Roboto-Italic-Variable.ttf") format("truetype-variations");
+		font-weight: 100 900;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Source Code Pro";
+		src: url("/fonts/SourceCodePro-Variable.ttf") format("truetype-variations");
+		font-weight: 200 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Source Code Pro";
+		src: url("/fonts/SourceCodePro-Italic-Variable.ttf") format("truetype-variations");
+		font-weight: 200 900;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	body {
+		@apply font-bold antialiased;
+	}
+
+	::selection {
+		background-color: var(--color-accent);
+		color: #09090b;
+	}
 }
 
 @layer components {
-  .project-copy h2 {
-    @apply mt-12 text-2xl font-semibold tracking-tight text-zinc-100;
-  }
+	.project-copy h2 {
+		@apply mt-6 text-xl font-semibold tracking-tight text-zinc-100;
+	}
 
-  .project-copy h3 {
-    @apply mt-8 text-xl font-semibold text-zinc-100;
-  }
+	.project-copy h3 {
+		@apply mt-4 text-lg font-semibold text-zinc-100;
+	}
 
-  .project-copy p {
-    @apply mt-6 text-lg leading-8 text-zinc-300;
-  }
+	.project-copy p {
+		@apply mt-3 leading-7 text-zinc-300;
+	}
 
-  .project-copy a {
-    @apply text-amber-300 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-300;
-  }
+	.project-copy a {
+		@apply text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent;
+	}
 
-  .project-copy ul {
-    @apply mt-6 list-disc space-y-2 pl-6 text-lg leading-8 text-zinc-300;
-  }
+	.project-copy ul {
+		@apply mt-3 list-disc space-y-1 pl-6 leading-7 text-zinc-300;
+	}
+}
+
+body {
+	background-color: #181818;
 }

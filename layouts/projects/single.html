@@ -1,38 +1,63 @@
-<!doctype html>
-<html lang="en">
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
+{{ define "main" }}
+<a class="text-xs text-zinc-500 transition-colors hover:text-accent" href="/">&larr;
+	Back</a>
 
-  <body class="min-h-screen bg-zinc-950 text-zinc-100">
-    <main class="mx-auto max-w-4xl px-6 py-16 sm:px-10 sm:py-24">
-      <a class="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-amber-300" href="/">&larr; All projects</a>
+<h1 class="mt-4 max-w-3xl text-4xl leading-none text-zinc-50 sm:text-5xl">{{ .Title }}
+</h1>
+<p class="mt-3 max-w-2xl text-base leading-7 text-zinc-400">{{ .Params.summary }}</p>
+<p class="mt-2 text-sm text-zinc-500">{{ .Params.role }} · {{ .Params.year }}</p>
+<ul class="mt-4 list-disc space-y-1 pl-5 text-zinc-300">
+	{{ with .Params.website }}
+	<li>
+		<a class="hover:text-accent" href="{{ . }}" target="_blank" rel="noreferrer">{{ . | replaceRE "^https?://" ""
+			| strings.TrimSuffix "/" }}</a>
+	</li>
+	{{ end }}
+	{{ with .Params.repo }}
+	<li>
+		<a class="hover:text-accent" href="{{ . }}" target="_blank" rel="noreferrer">{{ . | replaceRE "^https?://" ""
+			| strings.TrimSuffix "/" }}</a>
+	</li>
+	{{ end }}
+</ul>
 
-      <h1 class="mt-12 max-w-3xl font-display text-5xl leading-none tracking-tight text-zinc-50 sm:text-7xl">{{ .Title }}</h1>
-      <p class="mt-6 max-w-2xl text-xl leading-8 text-zinc-400">{{ .Params.summary }}</p>
-      <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-[0.16em] text-zinc-500">
-        <span>{{ .Params.role }}</span>
-        <span>{{ .Params.year }}</span>
-      </div>
+{{ with .Params.video }}
+<video class="mt-6 w-full" controls preload="metadata" {{ with $.Params.image }}poster="{{ . }}" {{ end }}>
+	<source src="{{ . }}" type="video/mp4">
+</video>
+{{ else }}
+{{ with $.Params.image }}
+<img class="mt-6 w-full" src="{{ . }}" alt="{{ $.Title }}">
+{{ end }}
+{{ end }}
 
-    {{ with .Params.image }}
-      <img class="mt-12 w-full rounded-2xl border border-zinc-800 object-cover shadow-2xl shadow-black/30" src="{{ . }}" alt="{{ $.Title }}">
-    {{ end }}
 
-      <ul class="mt-8 flex flex-wrap gap-2">
-      {{ range .Params.technologies }}
-      <li class="rounded-full border border-zinc-700 px-3 py-1 text-sm text-zinc-300">{{ . }}</li>
-      {{ end }}
-    </ul>
+{{ with .Params.gallery }}
+<div class="mt-6 grid gap-4">
+	{{ range . }}
+	<img class="w-full" src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+	{{ end }}
+</div>
+{{ end }}
 
-      <article class="project-copy mt-16 max-w-2xl border-t border-zinc-800 pt-8">
-      {{ .Content }}
-    </article>
-  </main>
-</body>
+{{ range .Params.videos }}
+<video class="mt-6 w-full" controls preload="metadata">
+	<source src="{{ . }}" type="video/mp4">
+</video>
+{{ end }}
 
-</html>
+
+{{ with .Params.technologies }}
+<ul class="mt-6 list-disc space-y-1 pl-5 text-zinc-300">
+	{{ range . }}
+	<li>{{ . }}</li>
+	{{ end }}
+</ul>
+{{ end }}
+
+<article class="project-copy mt-8 border-t border-zinc-800 pt-4">
+	{{ .Content }}
+</article>
+{{ end }}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+	{{ $desc := .Site.Params.description }}{{ with .Params.summary }}{{ $desc = . }}{{ end }}
+	<meta name="description" content="{{ $desc }}">
+	<link rel="canonical" href="{{ .Permalink }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="{{ .Site.Title }}">
+	<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+	<meta property="og:description" content="{{ $desc }}">
+	<meta property="og:url" content="{{ .Permalink }}">
+	<meta name="twitter:card" content="summary">
+	<link rel="icon" href="/favicon.png" type="image/png">
+	<link rel="preload" href="/fonts/Roboto-Variable.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="min-h-screen bg-zinc-950 text-zinc-100">
+	<main class="mx-auto max-w-4xl px-6 py-8 sm:px-8 sm:py-12">
+		{{ block "main" . }}{{ end }}
+	</main>
+	<div id="toast" role="status"
+		class="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm text-zinc-200 opacity-0 transition-opacity duration-300"></div>
+	<script>
+		var toastTimer;
+		function showToast(msg) {
+			var toast = document.getElementById('toast');
+			toast.textContent = msg;
+			toast.classList.remove('opacity-0');
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(function () { toast.classList.add('opacity-0'); }, 2000);
+		}
+	</script>
+</body>
+
+</html>

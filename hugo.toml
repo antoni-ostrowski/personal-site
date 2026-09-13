@@ -1,3 +1,8 @@
 baseURL = 'https://antost.dev/'
-locale = 'en-us'
+languageCode = 'en-us'
 title = 'Antoni Ostrowski'
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  description = 'Personal site and projects of Antoni Ostrowski.'
+  about = "Hi! I'm a fullstack dev based in Poland (19 years old). I enjoy building tools and web apps, my main languages are Go and Typescript. I'm enthusiastic about tech, music, rubik's cubes and [weird keyboards.](https://github.com/antoni-ostrowski/keyboard)"
