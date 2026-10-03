@@ -1,14 +1,14 @@
 {
   "private": true,
   "scripts": {
-    "dev:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch",
+    "dev:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch=always",
+    "dev:hugo": "hugo server -D -p 3000",
+    "dev": "bun run --parallel dev:css dev:hugo",
     "build:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify",
-    "build": "bun run build:css && hugo",
-    "dev": "concurrently \"bun run dev:css\" \"hugo server -D\""
+    "build": "bun run build:css && hugo"
   },
   "devDependencies": {
     "@tailwindcss/cli": "latest",
-    "concurrently": "latest",
     "tailwindcss": "latest"
   },
   "packageManager": "bun@1.4.1"
