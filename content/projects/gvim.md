@@ -1,6 +1,6 @@
 ---
 title: "gvim"
-summary: "A terminal-based text editor written in Go"
+summary: "Terminal-based text editor written in Go"
 role: "Author"
 year: "2025/26"
 technologies: ["Go"]
