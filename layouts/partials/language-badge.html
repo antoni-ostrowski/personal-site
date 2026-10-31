@@ -1,0 +1,44 @@
+{{- /* Inline tech badges. Renders first N items of .Params.technologies (N = .Params.badges, default 1). */ -}}
+{{- $colors := dict
+	"Go" "#00ADD8"
+	"TypeScript" "#3178C6"
+	"Typescript" "#3178C6"
+	"JavaScript" "#F1E05A"
+	"Javascript" "#F1E05A"
+	"Python" "#3572A5"
+	"Rust" "#DEA584"
+	"Odin" "#60AFFE"
+	"HTML" "#E34C26"
+	"CSS" "#563D7C"
+	"Shell" "#89E051"
+	"SQL" "#E38C00"
+	"Svelte" "#FF3E00"
+	"Vue" "#41B883"
+	"Lua" "#000080"
+	"Dockerfile" "#384D54"
+	"React" "#61DAFB"
+	"Next.js" "#FFFFFF"
+	"htmx" "#3D72D7"
+	"PostgreSQL" "#336791"
+	"Redis" "#FF4438"
+	"redis" "#FF4438"
+	"SQLite" "#0F80CC"
+	"Docker" "#2496ED"
+	"Bun" "#FBF0DF"
+	"Wails" "#DF1224"
+	"Strapi" "#4945FF"
+	"Stripe" "#635BFF"
+	"Convex" "#EE342F"
+	"Leaflet" "#199900"
+	"TanStack Start" "#FF4154"
+-}}
+{{- $n := .Params.badges | default 1 -}}
+{{- with .Params.technologies -}}
+{{- range first $n . -}}
+{{- $color := index $colors . | default "#A1A1AA" -}}
+<span
+	class="inline-flex items-center gap-1.5 rounded-full bg-zinc-800/60 px-2 py-0.5 text-[11px] font-normal leading-none text-zinc-400 ring-1 ring-inset ring-zinc-700/50">{{- /* */ -}}
+	<span class="size-1.5 shrink-0 rounded-full" style="background-color: {{ $color }}"></span>{{ . -}}
+</span>
+{{- end -}}
+{{- end -}}

@@ -4,9 +4,9 @@ title = 'Antoni Ostrowski'
 disableKinds = ['taxonomy', 'term']
 
 [params]
-  description = 'Personal site and projects of Antoni Ostrowski.'
+description = 'Personal site and projects of Antoni Ostrowski.'
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true

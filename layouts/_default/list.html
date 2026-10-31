@@ -9,8 +9,8 @@
 <ul class="mt-10 divide-y divide-zinc-800 border-y border-zinc-800">
 	{{ range sort .Pages ".Weight" "desc" }}
 	<li class="group py-4">
-		<a class="flex items-baseline justify-between gap-6 text-xl font-medium text-zinc-100 transition-colors group-hover:text-accent"
-			href="{{ .RelPermalink }}">{{ .Title }}</a>
+		<a class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xl font-medium text-zinc-100 transition-colors group-hover:text-accent"
+			href="{{ .RelPermalink }}">{{ .Title }}{{ partial "language-badge.html" . }}</a>
 		{{ with .Params.summary }}
 		<p class="mt-2 text-zinc-400">{{ . }}</p>
 		{{ end }}
