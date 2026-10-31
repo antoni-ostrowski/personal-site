@@ -6,6 +6,8 @@ year: "2026"
 technologies: ["TypeScript", "TanStack Start", "SQLite"]
 repo: "https://github.com/antoni-ostrowski/calorie-tracker"
 weight: 3
+build:
+  render: never
 ---
 
 Personal, mobile-first calorie tracker with minimal friction: snap a meal for AI macro estimation, scan barcodes, or search USDA foods. No login or bloat, self-hosted with SQLite via Docker.

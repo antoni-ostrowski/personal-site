@@ -6,6 +6,8 @@ year: "2026"
 technologies: ["Go", "Docker", "OpenCode"]
 repo: "https://github.com/antoni-ostrowski/op-reviewer"
 weight: 0
+build:
+  render: never
 ---
 
 It's very simple and focused solution. I wanted to have AI code review on PR's but I didn't want to pay for another SaaS, because Im already subbed to OpenCode Go, so I wanted to reuse that.
