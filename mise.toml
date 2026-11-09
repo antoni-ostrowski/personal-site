@@ -3,7 +3,12 @@ bun = "1.4.0"
 
 [tasks.dev]
 description = "Tailwind watcher + hugo server"
-run = "bun run dev"
+run = """
+bun run dev:css &
+css_pid=$!
+trap 'kill "$css_pid" 2>/dev/null || true' EXIT
+hugo server -D -p 3000 --bind 0.0.0.0
+"""
 
 [tasks.build]
 description = "Tailwind build + hugo build"
