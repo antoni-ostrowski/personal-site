@@ -1,6 +1,6 @@
 ---
 title: "go-htmx-template"
-summary: "Minimal Go + htmx + templ web template with Postgres and OTel"
+summary: "Minimal Go + htmx + templ web template"
 role: "Author"
 year: "2026"
 technologies: ["Go", "htmx", "PostgreSQL"]
